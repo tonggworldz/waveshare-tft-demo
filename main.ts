@@ -12,8 +12,32 @@ LCD1IN8.LCD_Color(COLOR.GREEN)
 LCD1IN8.DirectDisString(
 0,
 0,
-"   °C",
+"   Celsius",
 LCD1IN8.LCD_Color(COLOR.GREEN)
+)
+LCD1IN8.DisNumber(
+0,
+20,
+input.lightLevel(),
+LCD1IN8.LCD_Color(COLOR.YELLOW)
+)
+LCD1IN8.DirectDisString(
+0,
+20,
+"   Light ",
+LCD1IN8.LCD_Color(COLOR.YELLOW)
+)
+LCD1IN8.DisNumber(
+0,
+40,
+input.soundLevel(),
+LCD1IN8.LCD_Color(COLOR.RED)
+)
+LCD1IN8.DirectDisString(
+0,
+40,
+"   Sound ",
+LCD1IN8.LCD_Color(COLOR.RED)
 )
 LCD1IN8.LCD_Display()
 basic.forever(function () {
