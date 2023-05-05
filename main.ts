@@ -1,34 +1,31 @@
-input.onButtonPressed(Button.A, function () {
-    count += 1
-    LCD1IN8.DirectDrawRectangle(
-    43,
-    43,
-    87,
-    77,
-    0,
-    DRAW_FILL.DRAW_FULL,
-    DOT_PIXEL.DOT_PIXEL_1
-    )
-    LCD1IN8.DirectDisNumber(
-    54,
-    52,
-    count,
-    65535
-    )
-})
-let count = 0
-count = 0
+let Temp = input.temperature()
 LCD1IN8.LCD_ClearBuf(0)
 LCD1IN8.LCD_Init()
 LCD1IN8.LCD_Clear()
 LCD1IN8.LCD_SetBL(553)
-LCD1IN8.DisString(
+LCD1IN8.DisNumber(
 0,
 0,
-"It works!",
-65535
+Temp,
+LCD1IN8.LCD_Color(COLOR.GREEN)
+)
+LCD1IN8.DirectDisString(
+0,
+0,
+"   °C",
+LCD1IN8.LCD_Color(COLOR.GREEN)
 )
 LCD1IN8.LCD_Display()
 basic.forever(function () {
-	
+    if (Temp < 24) {
+        basic.showIcon(IconNames.Confused)
+    } else if (Temp < 27) {
+        basic.showIcon(IconNames.Happy)
+    } else if (Temp < 30) {
+        basic.showIcon(IconNames.Silly)
+    } else if (Temp < 33) {
+        basic.showIcon(IconNames.Asleep)
+    } else {
+        basic.showIcon(IconNames.Skull)
+    }
 })
